@@ -32,3 +32,14 @@
 
 *   **"Exotic hard-sphere clusters"** \\
     *Tangling Conference 2022*, Potsdam, Germany, 2022.
+
+
+
+### Interactive Visualization
+
+Here is an interactive 3D plot generated with WGLMakie.jl. You can rotate the plot and use the slider to change the surface parameter.
+
+<iframe src="/assets/html/interactive_plot.html" width="800" height="600" style="border:1px solid #ccc;">
+</iframe>
+
+This visualization demonstrates the effect of the parameter on the wave function `sin(sqrt(x^2+y^2) - param)`.
