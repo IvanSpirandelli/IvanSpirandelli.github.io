@@ -1,6 +1,6 @@
 
 # 1. Import the necessary libraries
-using WGLMakie, Makie, FileIO
+using WGLMakie, Makie, FileIO, JSServe
 
 # Set WGLMakie as the active backend
 WGLMakie.activate!()
@@ -10,9 +10,7 @@ WGLMakie.activate!()
 fig = Figure()
 
 # 3. Create an interactive element (a slider)
-slider = Slider(
-    fig[2, 1]
-)
+slider = Makie.Slider(fig[2, 1])
 slider_value = slider.value # This is an "Observable"
 
 ax = Axis3(fig[1, 1],
@@ -27,14 +25,19 @@ end
 
 surface!(ax, xs, ys, z_data)
 
-# 4. Add the slider to the layout
-fig[2, 1] = slider
 
-# Display the plot locally to test it (optional)
-# display(fig)
+# 3. Create a JSServe Page object configured for offline export
+page = JSServe.Page(
+    exportable=true, # an exportable page can be written to a file
+    offline=true     # this inlines all JS/CSS dependencies
+)
 
-# 5. Save the figure as a self-contained HTML file
-# This is the crucial step!
-save("interactive_plot.html", fig)
+# 4. Insert your Makie figure into the page's content
+# This is an alternative and more direct way than the previous DOM.div
+page(fig)
+
+open("interactive_plot.html", "w") do io
+    println(io, JSServe.page_html(page))
+end
 
 println("Successfully saved interactive plot to interactive_plot.html")
