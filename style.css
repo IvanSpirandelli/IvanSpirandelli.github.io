@@ -13,27 +13,55 @@ body {
     padding: 0 20px;
 }
 
-/* Two-column layout for the top section */
-.top-section {
+/* =============================================================== */
+/* PROFILE HEADER STYLES                                           */
+/* =============================================================== */
+.profile-header {
     display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.left-column-top {
-    flex: 1;
-}
-
-.right-column-top {
-    flex: 2;
+    align-items: center; /* Vertically aligns the picture and text */
+    gap: 30px;           /* Sets the space between the picture and text */
+    margin-bottom: 40px; /* Adds space below the header section */
+    flex-wrap: wrap;     /* Allows items to wrap on very small screens */
 }
 
 .profile-pic {
-    width: 100%;
-    border-radius: 8px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* This makes the image a perfect circle */
+    object-fit: cover;  /* This prevents the image from being squished */
 }
 
-/* Image Slider Styles */
+/* Removes the top margin from the h2 in the contact info for better alignment */
+.contact-info h2 {
+    margin-top: 0;
+}
+
+/* =============================================================== */
+/* TWO-COLUMN GRID STYLES                                          */
+/* =============================================================== */
+.page-grid {
+    display: flex;
+    gap: 40px; /* Adjust the space between columns */
+}
+
+.left-column {
+    flex: 2; /* This makes the left column take up 2/3 of the width */
+    min-width: 0;
+}
+
+.right-column {
+    flex: 1; /* This makes the right column take up 1/3 of the width */
+    min-width: 0;
+}
+
+
+/* =============================================================== */
+/* SHOWCASE & SLIDER STYLES                                        */
+/* =============================================================== */
+.showcase-section {
+    margin-top: 40px;
+}
+
 .slider {
     position: relative;
     max-width: 100%;
@@ -98,51 +126,17 @@ body {
     background-color: rgba(0,0,0,1);
 }
 
-/* Two-column layout for the main content */
-.main-content {
-    display: flex;
-    gap: 20px;
-}
-
-.left-column-main {
-    flex: 2;
-}
-
-.right-column-main {
-    flex: 1;
-}
-
-.full-width-section {
-    margin-top: 20px;
-}
-
-/* Responsive layout */
-@media (max-width: 768px) {
-    .top-section, .main-content {
-        flex-direction: column;
-    }
-}
 
 /* =============================================================== */
-/* UNIFIED TWO-COLUMN GRID STYLES                                  */
+/* RESPONSIVE LAYOUT                                               */
 /* =============================================================== */
-.page-grid {
-    display: flex;
-    gap: 40px; /* Adjust the space between columns */
-    margin-bottom: 20px;
-}
-
-.left-column {
-    flex: 2; /* This makes the left column take up 2/3 of the width */
-}
-
-.right-column {
-    flex: 1; /* This makes the right column take up 1/3 of the width */
-}
-
-/* Ensure your responsive rule targets the correct class */
 @media (max-width: 768px) {
     .page-grid {
         flex-direction: column;
+    }
+
+    .profile-header {
+        flex-direction: column; /* Stack picture and name on mobile */
+        text-align: center;   /* Center the text below the picture */
     }
 }
