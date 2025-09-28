@@ -17,7 +17,8 @@ body {
 /* PROFILE HEADER STYLES                                           */
 /* =============================================================== */
 .profile-header {
-    display: flex;
+    display: 150px;
+    height: 300px;
     align-items: center; /* Vertically aligns the picture and text */
     gap: 30px;           /* Sets the space between the picture and text */
     margin-bottom: 40px; /* Adds space below the header section */
