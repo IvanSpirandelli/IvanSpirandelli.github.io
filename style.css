@@ -59,20 +59,23 @@ body {
     min-width: 0;
 }
 
-
 /* =============================================================== */
 /* SHOWCASE & SLIDER STYLES                                        */
 /* =============================================================== */
+
 .showcase-section {
     margin-top: 40px;
+    /* Limit the maximum width of the showcase section */
+    max-width: 800px;
+    /* Center the showcase section within the container */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .slider {
     position: relative;
-    max-width: 100%;
-    margin: auto;
-    overflow: hidden;
     border-radius: 8px;
+    overflow: hidden; /* This is important to keep rounded corners */
 }
 
 .slides {
@@ -93,55 +96,69 @@ body {
 .slide img {
     width: 100%;
     display: block;
+    /* Remove rounded corners from the image itself */
+    border-radius: 0;
 }
 
+/* New styling for the caption */
 .caption {
-    position: absolute;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
+    /* Change position from absolute to relative */
+    position: relative;
+    /* Set background to a light grey */
+    background: #f0f0f0;
+    /* Change text color to dark grey */
+    color: #333;
     width: 100%;
-    text-align: center;
-    padding: 10px;
+    text-align: left; /* Align text to the left */
+    padding: 15px 20px; /* Add more padding */
     box-sizing: border-box;
 }
 
+/* Style the h3 inside the caption */
+.caption h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+/* Style the paragraph inside the caption */
+.caption p {
+    margin-bottom: 0;
+}
+
+/* New styling for the navigation arrows */
 .prev, .next {
     cursor: pointer;
     position: absolute;
     top: 50%;
+    /* Adjust vertical position to align with the image, not the whole slider */
+    transform: translateY(-50%);
     width: auto;
     padding: 16px;
-    margin-top: -22px;
     color: white;
     font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
+    font-size: 24px; /* Make the arrow character larger */
+    transition: 0.3s ease;
     user-select: none;
-    background-color: rgba(0,0,0,0.8);
+    /* --- Key changes for the arrows --- */
+    background-color: transparent; /* Remove the background color */
+    border-radius: 0; /* Remove the rounded corners */
+    text-shadow: 0 0 8px rgba(0,0,0,0.7); /* Add a subtle shadow for visibility */
+}
+
+/* Remove margin-top as we are now using transform */
+.prev {
+    left: 10px;
+    margin-top: 0;
 }
 
 .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
+    right: 10px;
+    margin-top: 0;
+    border-radius: 0; /* Remove the rounded corners */
 }
 
+/* Change arrow color on hover for better feedback */
 .prev:hover, .next:hover {
-    background-color: rgba(0,0,0,1);
-}
-
-
-/* =============================================================== */
-/* RESPONSIVE LAYOUT                                               */
-/* =============================================================== */
-@media (max-width: 768px) {
-    .page-grid {
-        flex-direction: column;
-    }
-
-    .profile-header {
-        flex-direction: column; /* Stack picture and name on mobile */
-        text-align: center;   /* Center the text below the picture */
-    }
+    background-color: rgba(0,0,0,0.2); /* Keep the hover effect subtle */
+    color: #fff;
 }
