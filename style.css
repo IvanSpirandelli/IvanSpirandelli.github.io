@@ -65,17 +65,23 @@ body {
 
 .showcase-section {
     margin-top: 40px;
-    /* Limit the maximum width of the showcase section */
-    max-width: 800px;
-    /* Center the showcase section within the container */
+    max-width: 900px; /* Increased max-width slightly to accommodate arrows */
     margin-left: auto;
     margin-right: auto;
+
+    /* --- Key changes for the layout --- */
+    display: flex;         /* Arrange arrows and slider in a row */
+    align-items: center;   /* Vertically center the arrows with the slider */
+    gap: 15px;             /* Add space between arrows and slider */
 }
 
 .slider {
-    position: relative;
+    /* The slider should grow to fill the available space */
+    flex-grow: 1;
     border-radius: 8px;
-    overflow: hidden; /* This is important to keep rounded corners */
+    overflow: hidden;
+    /* Remove position relative, it's no longer needed for the arrows */
+    position: relative;
 }
 
 .slides {
@@ -96,69 +102,56 @@ body {
 .slide img {
     width: 100%;
     display: block;
-    /* Remove rounded corners from the image itself */
-    border-radius: 0;
 }
 
-/* New styling for the caption */
 .caption {
-    /* Change position from absolute to relative */
     position: relative;
-    /* Set background to a light grey */
     background: #f0f0f0;
-    /* Change text color to dark grey */
     color: #333;
     width: 100%;
-    text-align: left; /* Align text to the left */
-    padding: 15px 20px; /* Add more padding */
+    text-align: left;
+    padding: 15px 20px;
     box-sizing: border-box;
 }
 
-/* Style the h3 inside the caption */
 .caption h3 {
     margin-top: 0;
     margin-bottom: 5px;
 }
 
-/* Style the paragraph inside the caption */
 .caption p {
     margin-bottom: 0;
 }
 
-/* New styling for the navigation arrows */
+/* --- NEW Arrow Styling --- */
 .prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    /* Adjust vertical position to align with the image, not the whole slider */
-    transform: translateY(-50%);
-    width: auto;
-    padding: 16px;
-    color: white;
+    /* REMOVE absolute positioning properties */
+    /* position: absolute; */
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    
+    /* ADD new styling for standalone arrows */
+    background-color: transparent;
+    border: none; /* Remove default button styles */
+    color: #333;  /* Dark color for arrows */
+    font-size: 32px;
     font-weight: bold;
-    font-size: 24px; /* Make the arrow character larger */
-    transition: 0.3s ease;
-    user-select: none;
-    /* --- Key changes for the arrows --- */
-    background-color: transparent; /* Remove the background color */
-    border-radius: 0; /* Remove the rounded corners */
-    text-shadow: 0 0 8px rgba(0,0,0,0.7); /* Add a subtle shadow for visibility */
+    cursor: pointer;
+    padding: 0 10px;
+    transition: color 0.2s ease;
 }
 
-/* Remove margin-top as we are now using transform */
 .prev {
-    left: 10px;
-    margin-top: 0;
+    /* Remove any leftover positioning */
+    left: 0;
 }
 
 .next {
-    right: 10px;
-    margin-top: 0;
-    border-radius: 0; /* Remove the rounded corners */
+    /* Remove any leftover positioning */
+    right: 0;
 }
 
-/* Change arrow color on hover for better feedback */
 .prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.2); /* Keep the hover effect subtle */
-    color: #fff;
+    color: #007bff; /* Change color on hover */
+    background-color: transparent; /* Ensure no background appears */
 }

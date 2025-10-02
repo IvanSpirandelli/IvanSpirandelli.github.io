@@ -129,7 +129,10 @@
         <!-- SHOWCASE SECTION (Below the grid)                             -->
         <!-- =============================================================== -->
         <div class="showcase-section">
-            <h3>Work Showcase</h3>
+
+            <!-- Arrow is now a sibling to the slider, not a child -->
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+
             <div class="slider">
                 <div class="slides">
                     <div class="slide active">
@@ -147,11 +150,13 @@
                         </div>
                     </div>
                 </div>
-                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+                <!-- The buttons are no longer here -->
             </div>
-        </div> <!-- End of .showcase-section -->
 
+            <!-- Arrow is now a sibling to the slider, not a child -->
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+
+        </div> <!-- End of .showcase-section -->
     </div> <!-- End of .container -->
 
     <script src="script.js"></script>
