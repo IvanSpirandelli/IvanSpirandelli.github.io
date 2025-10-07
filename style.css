@@ -29,8 +29,8 @@ body {
 }
 
 .profile-pic {
-    width: 150px;        /* Sets the width of the image */
-    height: 150px;       /* Sets the height of the image */
+    width: 250px;        /* Sets the width of the image */
+    height: 250px;       /* Sets the height of the image */
     border-radius: 50%;  /* This makes the image a perfect circle */
     object-fit: cover;   /* This prevents the image from being distorted */
 }
