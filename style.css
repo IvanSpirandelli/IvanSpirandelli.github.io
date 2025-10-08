@@ -40,12 +40,15 @@ body {
 /* COLLAPSIBLE ACCORDION STYLES                                    */
 /* =============================================================== */
 .collapsible {
-    background-color: #e2e2e2;
-    color: #333;
+    /* --- CHANGED --- */
+    background-color: #ffffff; /* White background */
+    color: #333;               /* Dark text color */
+    
     cursor: pointer;
     padding: 18px;
     width: 100%;
-    border: none;
+    border: 1px solid #ddd;     /* Added a light border for definition */
+    border-radius: 5px;         /* Slightly rounded corners */
     text-align: left;
     outline: none;
     font-size: 1.2em;
@@ -53,13 +56,24 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.collapsible:hover, .collapsible.active {
-    background-color: #ccc;
+.collapsible:hover {
+    background-color: #f9f9f9; /* Subtle hover effect */
 }
 
+.collapsible.active {
+     border-bottom-left-radius: 0; /* Straighten corners when open */
+     border-bottom-right-radius: 0;
+}
+
+
 .collapsible::after {
-    content: '\002B'; /* Plus sign */
-    font-weight: bold;
+    /* --- CHANGED --- */
+    content: '\002B';         /* Plus sign */
+    color: #333;               /* Match text color */
+    font-weight: 300;          /* Thinner font-weight */
+    font-size: 1.5em;          /* Larger font-size */
+    line-height: 0;            /* Helps with vertical alignment */
+
     float: right;
     margin-left: 5px;
 }
@@ -73,12 +87,38 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
-    background-color: #f9f9f9;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    background-color: #ffffff; /* White background to match button */
+    
+    /* --- CHANGED --- */
+    border: 1px solid #ddd;     /* Matching border */
+    border-top: none;           /* Remove top border to merge with button */
+    border-radius: 0 0 5px 5px; /* Round bottom corners */
 }
 
-/* Add a bottom border to the last content box when open */
-.collapsible.active + .content {
-    border-bottom: 1px solid #ccc;
+/* =============================================================== */
+/* CONTENT LIST STYLES                                             */
+/* =============================================================== */
+
+.content ul {
+    /* --- NEW --- */
+    list-style-type: none; /* Remove bullet points */
+    padding-left: 0;       /* Remove default indentation */
+}
+
+.content ul li, .content .teaching-entry {
+    /* --- NEW --- */
+    margin-bottom: 20px; /* Add space between list items and entries */
+}
+
+/* To avoid double margin on the last item */
+.content ul li:last-child, .content .teaching-entry:last-child {
+    margin-bottom: 0;
+}
+
+.content h3, .content h4 {
+    margin-top: 25px;
+}
+
+.content .teaching-entry ul li {
+    margin-bottom: 0; /* Reset margin for nested list items if any */
 }
