@@ -87,8 +87,6 @@ body {
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     background-color: #ffffff; /* White background to match button */
-    
-    /* --- CHANGED --- */
     border: 0px solid #ddd;     /* Matching border */
     border-top: none;           /* Remove top border to merge with button */
     border-radius: 0 0 5px 5px; /* Round bottom corners */
