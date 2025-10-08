@@ -1,5 +1,5 @@
 body {
-    font-family: sans-serif;
+    font-family: futura-pt;
     line-height: 1.6;
     margin: 0;
     padding: 20px;
@@ -22,11 +22,11 @@ body {
 }
 
 .profile-pic {
-    /* --- CHANGED --- */
-    width: 200px;         /* Set a fixed width */
-    height: auto;         /* Height is automatic to maintain aspect ratio */
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
     margin-bottom: 20px;
-    /* Removed border-radius and object-fit */
 }
 
 .intro-text {
@@ -40,63 +40,59 @@ body {
 /* COLLAPSIBLE ACCORDION STYLES                                    */
 /* =============================================================== */
 .collapsible {
-    background-color: #ffffff;
-    color: #333;
+    /* --- CHANGED --- */
+    background-color: #ffffff; /* White background */
+    color: #333;               /* Dark text color */
+    
     cursor: pointer;
     padding: 18px;
     width: 100%;
-    border: none;               /* --- REMOVED border --- */
+    border: 1px solid #ddd;     /* Added a light border for definition */
+    border-radius: 5px;         /* Slightly rounded corners */
     text-align: left;
     outline: none;
     font-size: 1.2em;
+    margin-top: 10px;
     transition: background-color 0.3s ease;
-    
-    /* --- NEW --- */
-    border-top: 1px solid #ddd; /* Add horizontal line above button */
-
-    /* --- NEW: Use Flexbox for alignment --- */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/* Add a final bottom border to the last collapsible button for a clean finish */
-.collapsible:last-of-type {
-     border-bottom: 1px solid #ddd;
 }
 
 .collapsible:hover {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Subtle hover effect */
 }
 
 .collapsible.active {
-    background-color: #f0f0f0;
+     border-bottom-left-radius: 0; /* Straighten corners when open */
+     border-bottom-right-radius: 0;
 }
 
 
 .collapsible::after {
-    content: '\002B';
-    color: #333;
-    font-weight: 300;
-    font-size: 1.5em;
-    /* --- REMOVED float and line-height --- */
+    /* --- CHANGED --- */
+    content: '\002B';         /* Plus sign */
+    color: #333;               /* Match text color */
+    font-weight: 300;          /* Thinner font-weight */
+    font-size: 1.5em;          /* Larger font-size */
+    line-height: 0;            /* Helps with vertical alignment */
+
+    float: right;
+    margin-left: 5px;
 }
 
 .collapsible.active::after {
-    content: "\2212";
+    content: "\2212"; /* Minus sign */
 }
 
 .content {
-    /* --- CHANGED --- */
-    padding: 25px 18px; /* Added padding for breathing room */
+    padding: 0 18px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
-    background-color: #ffffff;
-    border: none; /* Ensure no border */
+    background-color: #ffffff; /* White background to match button */
     
-    /* Add a border below the content when it is open */
-    border-bottom: 1px solid #ddd;
+    /* --- CHANGED --- */
+    border: 1px solid #ddd;     /* Matching border */
+    border-top: none;           /* Remove top border to merge with button */
+    border-radius: 0 0 5px 5px; /* Round bottom corners */
 }
 
 /* =============================================================== */
@@ -104,22 +100,25 @@ body {
 /* =============================================================== */
 
 .content ul {
-    list-style-type: none;
-    padding-left: 0;
+    /* --- NEW --- */
+    list-style-type: none; /* Remove bullet points */
+    padding-left: 0;       /* Remove default indentation */
 }
 
 .content ul li, .content .teaching-entry {
-    margin-bottom: 20px;
+    /* --- NEW --- */
+    margin-bottom: 20px; /* Add space between list items and entries */
 }
 
+/* To avoid double margin on the last item */
 .content ul li:last-child, .content .teaching-entry:last-child {
     margin-bottom: 0;
 }
 
 .content h3, .content h4 {
-    margin-top: 0; /* Adjusted top margin for headings inside content */
+    margin-top: 25px;
 }
 
 .content .teaching-entry ul li {
-    margin-bottom: 0;
+    margin-bottom: 0; /* Reset margin for nested list items if any */
 }
