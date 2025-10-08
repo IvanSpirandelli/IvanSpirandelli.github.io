@@ -47,8 +47,8 @@ body {
     cursor: pointer;
     padding: 18px;
     width: 100%;
-    border: 1px solid #ddd;     /* Added a light border for definition */
-    border-radius: 5px;         /* Slightly rounded corners */
+    border: 0px solid #ddd;     /* Added a light border for definition */
+    border-radius: 0px;         /* Slightly rounded corners */
     text-align: left;
     outline: none;
     font-size: 1.2em;
