@@ -67,7 +67,6 @@ body {
 
 
 .collapsible::after {
-    /* --- CHANGED --- */
     content: '\002B';         /* Plus sign */
     color: #333;               /* Match text color */
     font-weight: 300;          /* Thinner font-weight */
