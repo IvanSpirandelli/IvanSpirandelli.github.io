@@ -4,12 +4,12 @@ body {
     margin: 0;
     padding: 20px;
     background-color: #f4f4f4;
+    color: #333;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 800px;
     margin: auto;
-    overflow: auto;
     padding: 0 20px;
 }
 
@@ -17,141 +17,68 @@ body {
 /* PROFILE HEADER STYLES                                           */
 /* =============================================================== */
 .profile-header {
-    display: flex;
-    align-items: center; /* Vertically aligns the picture and text */
-    gap: 30px;           /* Sets the space between the picture and text */
-    margin-bottom: 40px; /* Adds space below the header section */
-    flex-wrap: wrap;     /* Allows items to wrap on very small screens */
-}
-
-.profile-container {
-    flex-shrink: 0; /* Prevents the image container from shrinking */
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 .profile-pic {
-    width: 200px;        /* Sets the width of the image */
-    height: 200px;       /* Sets the height of the image */
-    border-radius: 50%;  /* This makes the image a perfect circle */
-    object-fit: cover;   /* This prevents the image from being distorted */
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
 }
 
-/* Removes the top margin from the h2 in the contact info for better alignment */
-.contact-info h2 {
-    margin-top: 0;
+.intro-text {
+    font-size: 1.1em;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 
 /* =============================================================== */
-/* TWO-COLUMN GRID STYLES                                          */
+/* COLLAPSIBLE ACCORDION STYLES                                    */
 /* =============================================================== */
-.page-grid {
-    display: flex;
-    gap: 40px; /* Adjust the space between columns */
-}
-
-.left-column {
-    flex: 2; /* This makes the left column take up 2/3 of the width */
-    min-width: 0;
-}
-
-.right-column {
-    flex: 1; /* This makes the right column take up 1/3 of the width */
-    min-width: 0;
-}
-
-/* =============================================================== */
-/* SHOWCASE & SLIDER STYLES                                        */
-/* =============================================================== */
-
-.showcase-section {
-    margin-top: 40px;
-    max-width: 900px; /* Increased max-width slightly to accommodate arrows */
-    margin-left: auto;
-    margin-right: auto;
-
-    /* --- Key changes for the layout --- */
-    display: flex;         /* Arrange arrows and slider in a row */
-    align-items: center;   /* Vertically center the arrows with the slider */
-    gap: 15px;             /* Add space between arrows and slider */
-}
-
-.slider {
-    /* The slider should grow to fill the available space */
-    flex-grow: 1;
-    border-radius: 8px;
-    overflow: hidden;
-    /* Remove position relative, it's no longer needed for the arrows */
-    position: relative;
-}
-
-.slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.slide {
-    min-width: 100%;
-    box-sizing: border-box;
-    display: none;
-}
-
-.slide.active {
-    display: block;
-}
-
-.slide img {
-    width: 100%;
-    display: block;
-}
-
-.caption {
-    position: relative;
-    background: #f0f0f0;
+.collapsible {
+    background-color: #e2e2e2;
     color: #333;
-    width: 100%;
-    text-align: left;
-    padding: 15px 20px;
-    box-sizing: border-box;
-}
-
-.caption h3 {
-    margin-top: 0;
-    margin-bottom: 5px;
-}
-
-.caption p {
-    margin-bottom: 0;
-}
-
-/* --- NEW Arrow Styling --- */
-.prev, .next {
-    /* REMOVE absolute positioning properties */
-    /* position: absolute; */
-    /* top: 50%; */
-    /* transform: translateY(-50%); */
-    
-    /* ADD new styling for standalone arrows */
-    background-color: transparent;
-    border: none; /* Remove default button styles */
-    color: #333;  /* Dark color for arrows */
-    font-size: 32px;
-    font-weight: bold;
     cursor: pointer;
-    padding: 0 10px;
-    transition: color 0.2s ease;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.2em;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
 
-.prev {
-    /* Remove any leftover positioning */
-    left: 0;
+.collapsible:hover, .collapsible.active {
+    background-color: #ccc;
 }
 
-.next {
-    /* Remove any leftover positioning */
-    right: 0;
+.collapsible::after {
+    content: '\002B'; /* Plus sign */
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
 }
 
-.prev:hover, .next:hover {
-    color: #007bff; /* Change color on hover */
-    background-color: transparent; /* Ensure no background appears */
+.collapsible.active::after {
+    content: "\2212"; /* Minus sign */
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #f9f9f9;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+/* Add a bottom border to the last content box when open */
+.collapsible.active + .content {
+    border-bottom: 1px solid #ccc;
 }
