@@ -1,10 +1,35 @@
+@font-face {
+    font-family: 'Futura PT';
+    /* Prefer the installed/local font; include common local name variations */
+    src: local('Futura PT'), local('FuturaPT'), local('Futura PT Book'), local('FuturaPT-Book');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura PT';
+    src: local('Futura PT Bold'), local('FuturaPT-Bold'), local('Futura PT Heavy');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
-    font-family: futura-pt;
+    font-family: 'Futura PT', 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
-    padding: 20px;
+    padding: 100px 300px 300px; /* top 100px, left/right 300px, bottom 300px */
+    font-weight: 300; /* lighter overall font weight */
     background-color: #ffffff; /* CHANGED */
     color: #333;
+}
+
+/* Responsive: reduce margins on small screens */
+@media (max-width: 600px) {
+    body {
+        padding: 20px;
+    }
 }
 
 .container {
@@ -19,12 +44,13 @@ body {
 .profile-header {
     text-align: center;
     margin-bottom: 40px;
+    padding-top: 20px; /* add space above profile photo */
 }
 
 .profile-pic {
-    width: 200px;
-    height: 200px;
-    /* border-radius: 50%; <-- REMOVED */
+    width: 100%;
+    height: auto; /* keep aspect ratio */
+    display: block; /* avoid inline gap */
     object-fit: cover;
     margin-bottom: 20px;
 }
@@ -32,7 +58,8 @@ body {
 .intro-text {
     font-size: 1.1em;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0; /* align to left within the container */
+    text-align: left;
 }
 
 
@@ -45,15 +72,43 @@ body {
     color: #333;               /* Dark text color */
     
     cursor: pointer;
-    padding: 18px;
+    padding: 18px 18px 18px 0; /* remove left padding so text aligns with container */
     width: 100%;
     border: 0px solid #ddd;     /* Added a light border for definition */
     border-radius: 0px;         /* Slightly rounded corners */
     text-align: left;
     outline: none;
     font-size: 1.2em;
-    margin-top: 10px;
+    font-family: 'Futura PT', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    margin-top: 0;
     transition: background-color 0.3s ease;
+    position: relative; /* for absolutely positioned ::after */
+    text-transform: uppercase; /* make collapsible headings all caps */
+    letter-spacing: 0.02em;
+    /* single dividing line between stacked collapsibles */
+    border-top: 1px solid #cccccc;
+    border-style: solid;
+}
+
+/* Remove the top border from the very first collapsible so it doesn't have a line at the top of the list */
+.collapsible:first-of-type {
+    border-top: 1px solid #cccccc; /* add border above Research */
+}
+
+/* Add bottom border to the last collapsible so there's a line below Teaching */
+.collapsible:last-of-type {
+    border-bottom: 1px solid #cccccc;
+}
+
+/* Slightly lighter strong to keep emphasis without heavy bold */
+strong {
+    font-weight: 500;
+}
+
+.intro-text strong {
+    text-transform: uppercase;
+    display: inline-block; /* preserve line-break behavior */
 }
 
 .collapsible:hover {
@@ -68,13 +123,15 @@ body {
 
 .collapsible::after {
     content: '\002B';         /* Plus sign */
-    color: #333;               /* Match text color */
-    font-weight: 300;          /* Thinner font-weight */
-    font-size: 1.5em;          /* Larger font-size */
-    line-height: 0;            /* Helps with vertical alignment */
+    color: #000000;            /* darker blue */
+    font-weight: 100;          /* very light symbol weight */
+    font-size: 2.2em;          /* bigger symbol */
+    line-height: 1;            /* Use normal line height for centering */
 
-    float: right;
-    margin-left: 5px;
+    position: absolute;
+    right: 18px;               /* match button padding to sit inside box */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .collapsible.active::after {
@@ -87,9 +144,10 @@ body {
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     background-color: #ffffff; /* White background to match button */
+  
     border: 0px solid #ddd;     /* Matching border */
     border-top: none;           /* Remove top border to merge with button */
-    border-radius: 0 0 5px 5px; /* Round bottom corners */
+    border-radius: 0 0 0px 0px; /* Round bottom corners */
 }
 
 /* =============================================================== */
@@ -114,6 +172,20 @@ body {
 
 .content h3, .content h4 {
     margin-top: 25px;
+}
+
+/* Footer styling */
+.site-footer {
+    margin-top: 10px; /* reduce space between footer and last collapsible */
+    padding-top: 10px;
+    color: #333;
+}
+.site-footer a { color: inherit; text-decoration: underline; }
+
+/* Make the headings inside the first collapsible less heavy */
+.collapsible:first-of-type + .content h3,
+.collapsible:first-of-type + .content h4 {
+    font-weight: 400;
 }
 
 .content .teaching-entry ul li {
