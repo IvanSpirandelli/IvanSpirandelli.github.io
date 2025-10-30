@@ -1,5 +1,10 @@
 [deps]
+Bonito = "824d6782-a2ef-11e9-3a09-e5662e0c26f8"
+Distances = "b4f34e82-e78d-54a5-968a-f98e89d6e8f7"
 FileIO = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
+JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
 JSServe = "824d6782-a2ef-11e9-3a09-e5662e0c26f9"
 Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
+MorphoMol = "85e20460-a9b2-48f6-9df6-e154e9748d83"
+Observables = "510215fc-4207-5dde-b226-833fc4488ee2"
 WGLMakie = "276b4fcb-3e11-5398-bf8b-a0c2d153d008"
