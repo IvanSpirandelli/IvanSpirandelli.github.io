@@ -1,0 +1,17 @@
+ply
+format ascii 1.0
+element vertex 6
+property float32 x
+property float32 y
+property float32 z
+property float pscale
+property uchar red
+property uchar green
+property uchar blue
+end_header
+0.0 0.0 0.0 1.0 255 255 255
+2.0 0.0 0.0 1.0 255 255 255
+1.0 1.7320508075688772 0.0 1.0 255 255 255
+1.0 -0.5773502691896258 -1.632993161855452 1.0 255 255 255
+-0.0 1.1547005383792515 -1.632993161855452 1.0 255 255 255
+2.0 1.1547005383792515 -1.632993161855452 1.0 255 255 255
