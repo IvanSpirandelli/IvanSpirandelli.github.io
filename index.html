@@ -24,8 +24,8 @@
                 <br>
                 I am a mathematician with a focus on computational topology, discrete geometry and combinatorics. 
                 I am currently finishing my PhD at the University of Potsdam and am an affiliate at Lawrence Berkeley National Laboratory since my Fulbright fellowship in 2024/2025. 
-                During my PhD I investigated molecular self-assembly in simulations governed by shape-based potentials. At the moment I apply this to simulate
-                how protein-protein interaction inhibitors bind to protein targets. In my experience good solutions often start with a good visualization of the problem.
+                During my PhD I investigated molecular self-assembly in simulations governed by shape-based potentials. At the moment I am further developing 
+                this method to simulate how protein-protein interaction inhibitors bind to protein targets.
             </p>
         </div>
 
@@ -105,6 +105,117 @@
                 </li>
             </ul>
         </div>
+
+        <!-- =============================================================== -->
+        <!-- VISUAL IMPRESSIONS                                              -->
+        <!-- =============================================================== -->
+
+        <div style="background-color: #ffffff; color: #333; padding: 18px 18px 18px 0; width: 100%; text-align: left; font-size: 1.2em; font-family: 'Futura PT', 'Helvetica Neue', Arial, sans-serif; font-weight: 400; margin-top: 0; text-transform: uppercase; letter-spacing: 0.02em;">
+            Visual Impressions
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="visual-tabs" style="display: flex; gap: 0; margin-bottom: 0;">
+            <button class="visual-tab active" onclick="switchVisualTab(event, 'docking')" style="flex: 1; padding: 12px 24px; background: #f0f0f0; border: 1px solid #ddd; border-bottom: none; cursor: pointer; font-size: 16px; transition: background 0.3s;">
+                Docking Simulation
+            </button>
+            <button class="visual-tab" onclick="switchVisualTab(event, 'tmv')" style="flex: 1; padding: 12px 24px; background: white; border: 1px solid #ddd; border-bottom: none; cursor: pointer; font-size: 16px; transition: background 0.3s;">
+                Assembly Simulation
+            </button>
+            <button class="visual-tab" onclick="switchVisualTab(event, 'clusters1')" style="flex: 1; padding: 12px 24px; background: white; border: 1px solid #ddd; border-bottom: none; cursor: pointer; font-size: 16px; transition: background 0.3s;">
+                Exotic Clusters 1
+            </button>
+            <button class="visual-tab" onclick="switchVisualTab(event, 'clusters2')" style="flex: 1; padding: 12px 24px; background: white; border: 1px solid #ddd; border-bottom: none; cursor: pointer; font-size: 16px; transition: background 0.3s;">
+                Exotic Clusters 2
+            </button>
+        </div>
+
+        <!-- Explanation Box -->
+        <div id="docking-explanation" class="visual-explanation" style="padding: 20px; background: #f9f9f9; border: 1px solid #ddd; border-bottom: none; margin-bottom: 0;">
+            <p style="margin: 0;">Evolution of a Random Walk Metropolis simulation docking a ligand to a protein target. The simulated system shown is <a href="http://www.pdbbind.org.cn/" target="_blank">PDBbind database</a> entry 1a30.
+            <br><br>
+                *You can rotate, zoom, and pan the structure.
+            </p>
+        </div>
+        <div id="tmv-explanation" class="visual-explanation" style="display: none; padding: 20px; background: #f9f9f9; border: 1px solid #ddd; border-bottom: none; margin-bottom: 0;">
+            <p style="margin: 0;">Evolution of a Random Walk Metropolis simulation of two Tobacco Mosaic Virus capsid protein monomers assembling into a dimer.
+            <br><br>
+                Publications: <a href="https://doi.org/10.1093/pnasnexus/pgaf065">Evans & Spirandelli, PNAS Nexus, 2025.</a> <a href="https://arxiv.org/abs/2508.15321">Spirandelli, Nigmetov, Morozov & Evans, arXiv, 2025.</a>
+            <br><br>
+                *You can rotate, zoom, and pan the structure.
+            </p>
+        </div>
+        <div id="clusters1-explanation" class="visual-explanation" style="display: none; padding: 20px; background: #f9f9f9; border: 1px solid #ddd; border-bottom: none; margin-bottom: 0;">
+            <p style="margin: 0;">Exotic hard-sphere clusters discovered through morphometric solvation simulations.
+                Each structure shows the full cluster with the solvent accessible surface indicated by the transparent boundary (left)
+                alongside its contact graph representation (right).
+            <br><br>
+                Publication: <a href="https://www.pnas.org/doi/10.1073/pnas.2314959121">Spirandelli, Coles, Friesecke, & Evans, PNAS, 2024.</a>
+            <br><br>
+                *You can rotate, zoom, and pan the structures.
+            </p>
+        </div>
+        <div id="clusters2-explanation" class="visual-explanation" style="display: none; padding: 20px; background: #f9f9f9; border: 1px solid #ddd; border-bottom: none; margin-bottom: 0;">
+            <p style="margin: 0;">Additional exotic hard-sphere cluster configurations.
+                Each structure shows the full cluster (left) alongside its contact graph representation (right).
+            <br><br>
+                Publication: <a href="https://www.pnas.org/doi/10.1073/pnas.2314959121">Spirandelli, Coles, Friesecke, & Evans, PNAS, 2024.</a>
+            <br><br>
+                *You can rotate, zoom, and pan the structures.
+            </p>
+        </div>
+
+        <!-- Visualization Container -->
+        <div style="width: 100%; aspect-ratio: 1 / 1; border: 1px solid #ddd; overflow: auto;">
+            <iframe id="docking-content" class="visual-content" src="julia_code/docking_sim.html"
+                    style="width: 100%; height: 100%; border: none; display: block;"
+                    title="Docking Simulation Visualization">
+            </iframe>
+            <iframe id="tmv-content" class="visual-content" src="julia_code/tmv_sim.html"
+                    style="width: 100%; height: 100%; border: none; display: none;"
+                    title="Assembly Simulation Visualization">
+            </iframe>
+            <iframe id="clusters1-content" class="visual-content" src="julia_code/exotic_clusters_1.html"
+                    style="width: 100%; height: 100%; border: none; display: none;"
+                    title="Exotic Clusters 1 Visualization">
+            </iframe>
+            <iframe id="clusters2-content" class="visual-content" src="julia_code/exotic_clusters_2.html"
+                    style="width: 100%; height: 100%; border: none; display: none;"
+                    title="Exotic Clusters 2 Visualization">
+            </iframe>
+        </div>
+
+        <script>
+        function switchVisualTab(event, tabName) {
+            // Hide all content
+            var contents = document.getElementsByClassName('visual-content');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].style.display = 'none';
+            }
+
+            // Hide all explanations
+            var explanations = document.getElementsByClassName('visual-explanation');
+            for (var i = 0; i < explanations.length; i++) {
+                explanations[i].style.display = 'none';
+            }
+
+            // Remove active class from all tabs
+            var tabs = document.getElementsByClassName('visual-tab');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].style.background = 'white';
+                tabs[i].classList.remove('active');
+            }
+
+            // Show selected content and explanation
+            document.getElementById(tabName + '-content').style.display = 'block';
+            document.getElementById(tabName + '-explanation').style.display = 'block';
+
+            // Mark selected tab as active
+            event.currentTarget.style.background = '#f0f0f0';
+            event.currentTarget.classList.add('active');
+        }
+        </script>
+
     </div> <!-- End of .container -->
 
     <footer class="site-footer">
