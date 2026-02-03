@@ -60,7 +60,7 @@
             
             <h3>Software</h3>
              <ul>
-                <li><a href="https://github.com/IvanSpirandelli/DelaunayInterfaces.jl" target="_blank">DelaunayInterfaces.jl</a></li>
+                <li><a href="https://github.com/IvanSpirandelli/delaunay-interfaces" target="_blank">delaunay-interfaces</a></li>
                 <!-- <li><a href="https://github.com/IvanSpirandelli/MorphoMol.jl" target="_blank">MorphoMol.jl</a></li> -->
             </ul>
         </div>
@@ -119,7 +119,10 @@
 
         <!-- Tab Navigation -->
         <div class="visual-tabs" style="display: flex; gap: 0; margin-bottom: 0;">
-            <button class="visual-tab active" onclick="switchVisualTab(event, 'docking')" style="flex: 1; padding: 12px 24px; background: #f0f0f0; border: 1px solid #ddd; border-bottom: none; cursor: pointer; font-size: 16px; transition: background 0.3s;">
+            <button class="visual-tab active" onclick="switchVisualTab(event, 'interface')" style="flex: 1; padding: 12px 24px; background: #f0f0f0; border: 1px solid #ddd; border-bottom: none; cursor: pointer; font-size: 16px; transition: background 0.3s;">
+                Protein Interface
+            </button>
+            <button class="visual-tab" onclick="switchVisualTab(event, 'docking')" style="flex: 1; padding: 12px 24px; background: white; border: 1px solid #ddd; border-bottom: none; cursor: pointer; font-size: 16px; transition: background 0.3s;">
                 Docking Simulation
             </button>
             <button class="visual-tab" onclick="switchVisualTab(event, 'tmv')" style="flex: 1; padding: 12px 24px; background: white; border: 1px solid #ddd; border-bottom: none; cursor: pointer; font-size: 16px; transition: background 0.3s;">
@@ -134,7 +137,15 @@
         </div>
 
         <!-- Explanation Box -->
-        <div id="docking-explanation" class="visual-explanation" style="padding: 20px; background: #f9f9f9; border: 1px solid #ddd; border-bottom: none; margin-bottom: 0;">
+        <div id="interface-explanation" class="visual-explanation" style="padding: 20px; background: #f9f9f9; border: 1px solid #ddd; border-bottom: none; margin-bottom: 0;">
+            <p style="margin: 0;">Interface surfaces computed via barycentric subdivision of multicolored tetrahedra. Left: Hepatitis B core protein dimer (PDB: 4BMG). Right: Random colored point cloud. Top row shows the interface surfaces, bottom row shows the corresponding point clouds. Colors on the interface indicate proximity to the input points. Use the sliders to step through the interface filtration.
+            <br><br>
+                Software: <a href="https://github.com/IvanSpirandelli/delaunay-interfaces" target="_blank">delaunay-interfaces</a>
+            <br><br>
+                *You can rotate, zoom, and pan the structures.
+            </p>
+        </div>
+        <div id="docking-explanation" class="visual-explanation" style="display: none; padding: 20px; background: #f9f9f9; border: 1px solid #ddd; border-bottom: none; margin-bottom: 0;">
             <p style="margin: 0;">Evolution of a Random Walk Metropolis simulation docking a ligand to a protein target. The simulated system shown is <a href="https://www.pdbbind-plus.org.cn" target="_blank">PDBbind database</a> entry 1a30.
             <br><br>
                 *You can rotate, zoom, and pan the structure.
@@ -170,8 +181,12 @@
 
         <!-- Visualization Container -->
         <div style="width: 100%; aspect-ratio: 1 / 1; border: 1px solid #ddd; overflow: auto;">
-            <iframe id="docking-content" class="visual-content" src="julia_code/docking_sim.html"
+            <iframe id="interface-content" class="visual-content" src="julia_code/4bmg_interface.html"
                     style="width: 100%; height: 100%; border: none; display: block;"
+                    title="Protein Interface Visualization">
+            </iframe>
+            <iframe id="docking-content" class="visual-content" src="julia_code/docking_sim.html"
+                    style="width: 100%; height: 100%; border: none; display: none;"
                     title="Docking Simulation Visualization">
             </iframe>
             <iframe id="tmv-content" class="visual-content" src="julia_code/tmv_sim.html"
